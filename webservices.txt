@@ -50,4 +50,42 @@ public void welcome()
 	System.out.println("welcome to webservices");
 }
 }
-----------------------------------------------------------------------------	  
+----------------------------------------------------------------------------
+Example-2
+-----------------
+package com.example.demo;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+
+@SpringBootApplication
+public class WebServicesExample2Application {
+
+	public static void main(String[] args) {
+		ApplicationContext ac=SpringApplication.run(WebServicesExample2Application.class, args);
+		MyMessage1 abc=ac.getBean("obj",MyMessage1.class);
+		System.out.println("The sum is "+abc.sum(4, 6));
+		System.out.println("The sub is "+abc.sub(14, 6));
+			}
+
+}
+-------------------------------------------------------------------------
+package com.example.demo;
+
+import org.springframework.stereotype.Component;
+
+@Component("obj")
+public class MyMessage1
+{
+public int sum(int a,int b)
+{
+	return a+b;
+	}
+public int sub(int a,int b)
+{
+	return a-b;
+	}
+
+}
+-----------------------------------------------------------------------	  

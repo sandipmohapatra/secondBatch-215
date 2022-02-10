@@ -148,6 +148,8 @@ public class MyMessage3 implements CommandLineRunner
 @Order
 ----------------------------------------------------------------------------------------------------------
 2)Create a Bank project where you can register few customers and store them.
+customer(accno,name,address,phoneno,email,adharno)
+
 --------------------------------------------------------------------------------------------
 
 	  

@@ -1,0 +1,53 @@
+WebServices
+---------------------------
+There are 2 types of web services.
+1)SOAP :- 
+2)REST :-Representational State Transfer.
+----------------------------------------------------------
+Rest webservices uses HTTP protocal.
+Rest is an architectural approach.We have many webservices present in the web.
+Example :- Online movie Ticket,Ola,Uber,swiggie ,paytm,google pay.These are all webservices.
+we can access these webservices using any programing language.In paytm we can have many services combined together.like paying utility bill. money transfer from one bank to another bank.
+The data transfer will be in the form of either XML,Html or JSOn format.
+Restful webservices are platform and language independent.
+we can access webservices by using PHP,java,.net,python,c++.
+----------------------------------------------------------------------------------------------------------------
+we have some methods in HTTP which we use in Restful webservices to enter datta,save data,update data or delete data.
+1)GET :- it used to read a resource(database) and display the data.
+2)PUT:- It is used to update an existing data in the resource.
+3)POST:- It is used to create a new data in the resource.
+4)DELETE :-It is used to delete data from the resource.
+------------------------------------------------------------------------------------------
+Example-1
+------------------
+package com.example.demo;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+
+@SpringBootApplication
+public class WebServicesExample1Application {
+
+	public static void main(String[] args) 
+	{
+	ApplicationContext ac=SpringApplication.run(WebServicesExample1Application.class, args);
+	MyMessage obj=ac.getBean("msg",MyMessage.class);
+	obj.welcome();
+	}
+
+}
+------------------------------------------------------
+package com.example.demo;
+
+import org.springframework.stereotype.Component;
+
+@Component("msg") //an object by the name msg will be created for this class.
+public class MyMessage 
+{
+public void welcome()
+{
+	System.out.println("welcome to webservices");
+}
+}
+----------------------------------------------------------------------------	  

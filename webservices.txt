@@ -143,4 +143,11 @@ public class MyMessage3 implements CommandLineRunner
 		System.out.println("The empno is"+empno);
 	}
 }
-------------------------------------------------------------------------------------------------	  
+------------------------------------------------------------------------------------------------
+1)Create 5 extra files where you can enter the student's info (rollno,name,sub1,sub2,sub3 find sum and avg)
+@Order
+----------------------------------------------------------------------------------------------------------
+2)Create a Bank project where you can register few customers and store them.
+--------------------------------------------------------------------------------------------
+
+	  

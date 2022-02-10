@@ -88,4 +88,38 @@ public int sub(int a,int b)
 	}
 
 }
------------------------------------------------------------------------	  
+-----------------------------------------------------------------------
+Example-3
+-----------------
+package com.example.demo;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class WebServicesExample3Application {
+
+	public static void main(String[] args) {
+		SpringApplication.run(WebServicesExample3Application.class, args);
+	}
+
+}
+----------------------------------------------------------------
+package com.example.demo;
+
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
+
+@Component
+public class MyMessage2 implements CommandLineRunner
+{
+int empno=10;
+String name="sandip";
+	public void run(String... args)throws Exception
+	{
+		System.out.println("Hello All");
+		System.out.println("The name is"+name);
+		System.out.println("The empno is"+empno);
+		}
+}
+----------------------------------------------------------------------------------------------------	  

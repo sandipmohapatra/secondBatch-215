@@ -281,8 +281,13 @@ public String getRequest(HttpServletRequest req,HttpServletResponse res)throws S
 </form>
 </html>
 ---------------------------------------------------------------------
-
-
+Assignment-2
+----------------------------
+create a bank project
+login,register
+apply for loan,credit card,debit card
+apply for home loan or car loan
+---------------------------------------------------------
 
 
 

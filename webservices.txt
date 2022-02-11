@@ -143,13 +143,107 @@ public class MyMessage3 implements CommandLineRunner
 		System.out.println("The empno is"+empno);
 	}
 }
-------------------------------------------------------------------------------------------------
+
+
+
+
+-------------------------------------------------------Assignment-1-----------------------------------------
 1)Create 5 extra files where you can enter the student's info (rollno,name,sub1,sub2,sub3 find sum and avg)
 @Order
 ----------------------------------------------------------------------------------------------------------
 2)Create a Bank project where you can register few customers and store them.
 customer(accno,name,address,phoneno,email,adharno)
 
---------------------------------------------------------------------------------------------
+------------------------------------------Example-4--------------------------------------------------
+1)File --->new--->spring starter project
+2)change -->jar to war
+3)web --->spring web
+4)under webapp create folder ---->WEB-INF--->views---->login.jsp,register.jsp,contact.jsp
+------------Login.jsp---------------
+<html>
+<form>
+<h1><center>Employee Login Page</center></h1><hr><hr>
+<table>
+<tr><td>Enter username<td><input type=text name=t1 size=20 required></tr>
+<tr><td>Enter password<td><input type=password name=t2 size=20 required></tr>
+<tr><td><td><input type=submit value=submit></tr>
+</table>
+</form>
+</html>
+----------------------------------------Register.jsp-----------------------------------------------------
+<html>
+<form>
+<h1><center>Employee Registration Page</center></h1><hr><hr>
+<table>
+<tr><td>Enter your name<td><input type=text name=t1 size=20 required></tr>
+<tr><td>Enter your address<td><input type=text name=t2 size=20 required></tr>
+<tr><td>Enter your email<td><input type=text name=t3 size=20 required></tr>
+<tr><td>Enter your phone no<td><input type=text name=t4 size=20 required></tr>
+<tr><td>Enter salary<td><input type=text name=t5 size=20 required></tr>
+<tr><td>Enter designation<td><input type=text name=t6 size=20 required></tr>
+<tr><td><td><input type=submit value=submit></tr>
+</table>
+</form>
+</html>
+--------------------------------------------------------------------------------------------------------------
+TestController.java
+----------------------------------------
+package com.example.demo;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class TestController {
+
+@GetMapping("/log")
+public String showLogin()
+{
+	return "login";
+}
+@GetMapping("/reg")
+public String showRegister()
+{
+	return "register";
+}
+}
+----------------------------------------------------------------------------------------------------------------
+pom.xml
+-----------------
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+-----------------------------------application.properties---------------------------------------
+server.port=8090
+
+spring.mvc.view.prefix=/WEB-INF/views/
+spring.mvc.view.suffix=.jsp
+----------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	  

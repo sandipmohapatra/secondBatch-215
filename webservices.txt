@@ -221,10 +221,66 @@ server.port=8090
 
 spring.mvc.view.prefix=/WEB-INF/views/
 spring.mvc.view.suffix=.jsp
-----------------------------------------------------
+--------------------------------example-5--------------------
 
+package com.example.demo;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class TestController {
+
+@GetMapping("/log")
+public String showLogin()
+{
+	return "login";
+}
+@GetMapping("/reg")
+public String showRegister()
+{
+	return "register";
+}
+@RequestMapping("/save")
+public String getRequest(HttpServletRequest req,HttpServletResponse res)throws ServletException,IOException
+{
+	PrintWriter pw=res.getWriter();
+	String a=req.getParameter("t1");
+	String b=req.getParameter("t2");
+	String c=req.getParameter("t3");
+	String d=req.getParameter("t4");
+	String e=req.getParameter("t5");
+	String f=req.getParameter("t6");
+	
+	return "success";
+	
+}
+
+}
+---------------------------------------------------------------------------------------------------
+<html>
+<form action="save">--------------------change-------------------
+<h1><center>Employee Registration Page</center></h1><hr><hr>
+<table>
+<tr><td>Enter your name<td><input type=text name=t1 size=20 required></tr>
+<tr><td>Enter your address<td><input type=text name=t2 size=20 required></tr>
+<tr><td>Enter your email<td><input type=text name=t3 size=20 required></tr>
+<tr><td>Enter your phone no<td><input type=text name=t4 size=20 required></tr>
+<tr><td>Enter salary<td><input type=text name=t5 size=20 required></tr>
+<tr><td>Enter designation<td><input type=text name=t6 size=20 required></tr>
+<tr><td><td><input type=submit value=submit></tr>
+</table>
+</form>
+</html>
+---------------------------------------------------------------------
 
 
 

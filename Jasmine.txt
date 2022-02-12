@@ -82,6 +82,64 @@ expect(cal.sum(3,5)).toEqual(8);
 beforeEach():-The beforeEach function is called once before each spec in the describe()  in which itt is called.
 afterEach():-This will called once after each spec.
 --------------------------------------------------------------------------------
+Example-3
+------------------
+calculator = function() {};
+
+calculator.prototype.sum = function(number1, number2)
+{
+return number1 + number2;
+}
+
+calculator.prototype.sub = function(number1, number2)
+{
+return number1 - number2;
+}
+
+calculator.prototype.mul = function(number1, number2)
+{
+return number1 * number2;
+}
+
+calculator.prototype.div = function(number1, number2)
+{
+return number1 / number2;
+}
+-------------------------------------------------------------------------------
+describe("calculator",function()
+{
+    var cal;
+    beforeEach(function()
+    {
+        cal = new calculator();
+    });
+describe("we use the calculator for basic math operation",function()
+{
+
+it("should be able to add 3 and 5",function()
+{
+expect(cal.sum(3,5)).toEqual(8);
+});
+
+it("should be able to subtract 3 and 5",function()
+{
+expect(cal.sub(3,5)).toEqual(-2);
+});
+
+it("should be able to multiply 3 and 5",function()
+{
+expect(cal.mul(3,5)).toEqual(15);
+});
+
+it("should be able to divide 15 and 5",function()
+{
+expect(cal.div(15,5)).toEqual(3);
+});
+
+});
+});
+
+-------------------------------------------------------------------------------------
 
 
 

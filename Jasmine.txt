@@ -171,10 +171,118 @@ expect(fact.fac(4)).toEqual(24);
 });
 });
 ---------------------------------------------------------------------------------------------------------
+Functions:-
+--------------------
+1)ToEqual():- It is a simplest mattcher present in the jasmine inbuilt library.
+It checks whether the result of the operation matches or not.
+example:-
+test.js
+-------------
+window.expectexam={
+    currentVal:0,
+};
 
+-------------------------------------------------------------- 
+spec.js
+describe("Different Method of Expected Block",function()
+{
+    it("the example of toEqual method",function()
+    {
+        expect(expectexam.currentVal).toEqual(0);
+    });
+});
+-------------------------------------------------------------------------------------------------------------------------
+2)not.toEqual():- It is a simplest matcher present in the jasmine inbuilt library.
+It checks whether the result of the operation matches or not.It is opposite to toEqual().
+example:-
+test.js
+-------------
+window.expectexam={
+    currentVal:0,
+};
 
-
-
+-------------------------------------------------------------- 
+spec.js
+describe("Different Method of Expected Block",function()
+{
+    it("the example of not.toEqual method",function()
+    {
+        expect(expectexam.currentVal).not.toEqual(5);
+    });
+});
+----------------------------------------------
+3)ToBe() :-This is similar to toEqual().But technically different .It matches with the type of object.
+example:-
+window.expectexam={
+    name:"Gopal",
+    name1:"Gopal"
+};
+--------------------------------------------------------------
+describe("Different Method of Expected Block",function()
+{
+    it("the example of toBe method",function()
+    {
+        expect(expectexam.name).toBe(expectexam.name1);
+    });
+});
+-----------------------------------------------------------------------------------------
+4)not.toBe() :-It is opposite to toBe() .It matches with the type of object.
+example:-
+window.expectexam={
+    name:"Gopal",
+    name1:"Shivam"
+};
+--------------------------------------------------------------
+describe("Different Method of Expected Block",function()
+{
+    it("the example of not.toBe method",function()
+    {
+        expect(expectexam.name).not.toBe(expectexam.name1);
+    });
+});
+-----------------------------------------------------------------------------------------
+5)ToBeTruthy():- This is Boolean matcher to check whether the result is equal to true or false.
+example :- age is greater than 18.(return true/false)
+example:-
+window.expectexam={
+    exampleofTruefalse : function(num)
+    {
+        if(num < 10)
+        return true;
+        else
+        return false;
+    },
+};
+------------------------------------
+describe("Different Method of Expected Block",function()
+{
+    it("the example of toBeTruthy()",function()
+    {
+        expect(expectexam.exampleofTruefalse(7)).toBeTruthy();
+    });
+});
+---------------------------------------------------------------------------------
+6)toBeFalsy():- This is Boolean matcher to check whether the result is equal to true or false.
+example :- age is greater than 18.(return true/false)
+example:-
+window.expectexam={
+    exampleofTruefalse : function(num)
+    {
+        if(num < 10)
+        return true;
+        else
+        return false;
+    },
+};
+------------------------------------
+describe("Different Method of Expected Block",function()
+{
+    it("the example of toBeFalsy()",function()
+    {
+        expect(expectexam.exampleofTruefalse(17)).toBeFalsy();
+    });
+});
+--------------------------------------------------------------------------------- 
 
 
 

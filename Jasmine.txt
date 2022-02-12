@@ -283,8 +283,115 @@ describe("Different Method of Expected Block",function()
     });
 });
 --------------------------------------------------------------------------------- 
+7)To contain():- It matches with the elements in an array or some other sequential objects.
 
+example:-
+describe("Different Method of Expected Block",function()
+{
+    it("the example of toContain()",function()
+    {
+        expect([1,2,3,4]).toContain(3);
+    });
+});
+--------------------------------------------------------------------------
+8)ToBeCloseTo():- It matches whether the actual value is sole to the expected value.
 
+example:-
+describe("Different Method of Expected Block",function()
+{
+    it("the example of toBeCloseTo()",function()
+    {
+        expect(12.35).toBeCloseTo(12.3, 1);
+    });
+});
+-----------------------------------------------------------------------------------------------------
+9)ToMatch():- It is used for string type variable.
+It checks the specific string is present in the expected output.
+example:-
+describe("Different Method of Expected Block",function()
+{
+    it("the example of toMatch()",function()
+    {
+        expect("jasmine is not a flower").toMatch(/flower/);
+    });
+});
+------------------------------------------------------------------------------------------------------------
+10)ToBeDefined():-This checks whether any variable is predefined or not.
+example:- x=10;
+
+example:-
+currentVal = 10;
+
+describe("Different Method of Expected Block",function()
+{
+    it("the example of toBeDefined()",function()
+    {
+        expect(currentVal).toBeDefined();
+    });
+});
+----------------------------------------------------------------------------------------------
+11)ToBeUnDefined():- This checks whether variable is undefined or not.
+It is opposite to toBeDefined().
+example:-
+describe("Different Method of Expected Block",function()
+{
+    it("the example of toBeUndefined()",function()
+    {
+        var currentVal;
+        expect(currentVal).toBeUndefined();
+    });
+});
+-------------------------------------------------------------------------------------------------
+12)toBeNull():- This will check the value is null or not.
+
+example:- var name= null;
+example:-
+describe("Different Method of Expected Block",function()
+{
+    it("the example of toBeNull()",function()
+    {
+        var currentVal = null;
+        expect(currentVal).toBeNull();
+    });
+});
+----------------------------------------------------------------------------------------
+13)ToBeGreaterThan():- It is applicable to numbers only.
+It checks the number is greater than or not.
+
+example:-
+describe("Different Method of Expected Block",function()
+{
+    it("the example of toBeGreaterThan()",function()
+    {
+        var currentVal = 5;
+        expect(currentVal).toBeGreaterThan(4);
+    });
+});
+----------------------------------------------------------------------------------------------
+14)ToBeLessThan():- It is applicable to numbers only.
+It checks the number is greater than or not.
+
+example:-
+describe("Different Method of Expected Block",function()
+{
+    it("the example of toBeLessThan()",function()
+    {
+        var currentVal = 5;
+        expect(currentVal).toBeLessThan(10);
+    });
+});
+-----------------------------------------------------------------------------------------------
+ 15)toBeNAN:-to be not a number
+example :- 0/0 =infinity .so o/p will be NAN.
+example:-
+describe("Different Method of Expected Block",function()
+{
+    it("the example of toBeNAN()",function()
+    {
+       expect( 0 / 0).toBeNaN();
+    });
+});
+----------------------------------------------------------------------------------------------
 
 
 

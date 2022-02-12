@@ -56,9 +56,9 @@ step-1:-download the file.(https://github.com/jasmine/jasmine/releases)
 ------------------------------------------------------------------------------------------------------------------
 Example-2
 -------------------
-calc = function() {};
+calculator = function() {};
 
-calc.prototype.sum = function(number1, number2)
+calculator.prototype.sum = function(number1, number2)
 {
 return number1 + number2;
 }
@@ -79,6 +79,7 @@ expect(cal.sum(3,5)).toEqual(8);
 });
 
 --------------------------------------------------------------------------------------------
+beforeEach
 
 
 

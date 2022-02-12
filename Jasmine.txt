@@ -1,0 +1,56 @@
+1)Jasmine is an open-source javascript framework capable of testing any kind of javascript application. 
+2)Jasmine follows BDD (behavior Driven Development) procedure to ensure that each line
+in javascript statement is propertly unit tested.
+3)Jasmine provides a small syntax to test the smallest unit of application.
+4)In unit testing we test small function part by part instead of testing the whole application.
+---------------------------------------------------------------------------------------------------------------------------------
+we have to install jasmine software to do the testing.
+After installation we have we will see 
+1)lib folder :- It contains some javascript library.It is used to test the application. 
+2)spec folder:- In this we have to write the test cases. 
+3)src folder:-In this we will have the program to test.
+4)license
+5)SpecRunner.html:-we have to mention both the files location.Which will test the application and display the report.
+example:-
+<!-- include source files here... -->
+  <script src="src/Player.js"></script>
+  
+  <!-- include spec files here... -->
+  <script src="spec/SpecHelper.js"></script> 
+--------------------------------------------------------------------------------
+to download we have to goto the official website :- https://github.com/jasmine/jasmine/releases
+We have to download the standalone vesion.
+-----------------------------Example-1------------------------------------------
+source file:-
+test1.js
+--------------
+var helloworld = function()
+{
+return 'Hello every one welcome to Jasmine';
+};
+----------------------------------------------------------------------------
+spec file:-
+----------------
+spect1.js
+-----------------
+describe("Hello every one welcome to Jasmine", function()
+{
+it("should return Hello every one welcome to Jasmine", function()
+{
+expect(helloworld()).toEqual('Hello every one welcome to Jasmine');
+});
+});
+----------------------------------------------------------------------------------------------------
+<!-- include source files here... -->
+  <script src="src/test1.js"></script>
+  
+  <!-- include spec files here... -->
+  <script src="spec/spec1.js"></script> 
+----------------------------------------------------------------------------
+we have 2 parts 
+1)expected output
+2)real output 
+if both match then the test is successful otherwise it will be failure.
+------------------------------------------------------------------------------------------------------ 
+
+

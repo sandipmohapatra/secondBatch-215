@@ -51,6 +51,51 @@ we have 2 parts
 1)expected output
 2)real output 
 if both match then the test is successful otherwise it will be failure.
------------------------------------------------------------------------------------------------------- 
+------------------------------------------------------------------------------------------------------
+step-1:-download the file.(https://github.com/jasmine/jasmine/releases)
+------------------------------------------------------------------------------------------------------------------
+Example-2
+-------------------
+calc = function() {};
+
+calc.prototype.sum = function(number1, number2)
+{
+return number1 + number2;
+}
+------------------------------------------------------------
+describe("calculator",function(){
+    var cal;
+    beforeEach(function()
+    {
+        cal = new calculator();
+    });
+describe("we use the calculator for basic math operation",function()
+{
+it("should be able to add 3 and 5",function()
+{
+expect(cal.sum(3,5)).toEqual(8);
+});
+});
+});
+
+--------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
 
 

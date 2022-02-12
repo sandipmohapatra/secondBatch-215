@@ -79,8 +79,9 @@ expect(cal.sum(3,5)).toEqual(8);
 });
 
 --------------------------------------------------------------------------------------------
-beforeEach
-
+beforeEach():-The beforeEach function is called once before each spec in the describe()  in which itt is called.
+afterEach():-This will called once after each spec.
+--------------------------------------------------------------------------------
 
 
 

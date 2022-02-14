@@ -281,13 +281,44 @@ public String getRequest(HttpServletRequest req,HttpServletResponse res)throws S
 </form>
 </html>
 ---------------------------------------------------------------------
+
+
+
 Assignment-2
-----------------------------
+---------------------------------------------------------
 create a bank project
 login,register
 apply for loan,credit card,debit card
 apply for home loan or car loan
 ---------------------------------------------------------
+MySql
+-----------------
+1)to display the database.
+show databases;
+
+2)create database
+create database mphasis215;
+
+3)to enter into the database.
+use mphasis215;
+
+4)to create table
+create table student(rollno int,name varchar(30),address varchar(30)); 
+
+5)to insert data
+insert into student values(1,'sandip','Bangalore');
+
+6)to view the table
+select * from student;
+
+7)update table 
+update student set address='pune' where name='pooja';
+
+8)to delete data from the table
+delete from student where rollno=2;
+
+
+
 
 
 

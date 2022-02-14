@@ -316,13 +316,119 @@ update student set address='pune' where name='pooja';
 
 8)to delete data from the table
 delete from student where rollno=2;
+---------------------------------------------------------------------------------------------------------------
+step 1:- Create spring starter project.
+step 2:-under webapp create WEB-INF---->views----->register.jsp,success.jsp
+ ---------------------------------
+applicaation.properties
+-------------------------------
+server.port=8090
 
+spring.mvc.view.prefix=/WEB-INF/views/
+spring.mvc.view.suffix=.jsp
 
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.url=jdbc:mysql://localhost:3306/mphasis215
+spring.datasource.username=root
+spring.datasource.password=1234
 
+--------------------------------------------------------------------------------------------
+pom.xml
+--------------------
+<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.3.1.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.46</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+			<scope>provided</scope>
+		</dependency>
+--------------------------------------------------------------------------------------------------------------------
+spring is lightweight framework .wiith the help of jar files only it will run.
+---------------------------------------------------------------------------------------------------------
+controller
+----------------
+package com.example.demo;
 
+import java.io.IOException;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
+@Controller
+public class TestController 
+{
+
+	@Autowired
+	private JdbcTemplate jt;//file which connect java with database.
+	
+	
+	@GetMapping("/reg")
+	public String showRegister()
+	{
+		return "Register";
+	}
+	@RequestMapping("/save")
+	public String doRegister(HttpServletRequest req,HttpServletResponse res)throws ServletException,IOException
+	{
+		String a=req.getParameter("t1");
+		String b=req.getParameter("t2");
+		String c=req.getParameter("t3");
+		String d=req.getParameter("t4");
+		String e=req.getParameter("t5");
+		String f=req.getParameter("t6");
+		String sql="insert into Mstudent values(?,?,?,?,?,?)"; 
+		jt.update(sql,a,b,c,d,e,f);
+		return "success";
+			}
+	
+	
+}
+--------------------------------------------------------------------------------------
+Register.jsp
+----------------------------
+<html>
+<body>
+<form action="save">
+<h1><center>Employee Registration Page</center></h1><hr><hr>
+<table>
+<tr><td>Enter your name<td><input type=text name=t1 size=20></td></tr>
+<tr><td>Enter your address<td><input type=text name=t2 size=20></td></tr>
+<tr><td>Enter your email<td><input type=text name=t3 size=20></td></tr>
+<tr><td>Enter your designation<td><input type=text name=t4 size=20></td></tr>
+<tr><td>Enter your salary<td><input type=text name=t5 size=20></td></tr>
+<tr><td>Enter your phoneno<td><input type=text name=t6 size=20></td></tr>
+<tr><td><td><input type=submit value=submit></td></tr>
+</table>
+</form>
+</body>
+</html>
+<!-- create table mstudent(name varchar(30),address varchar(30),email varchar(30),
+designation varchar(30),salary varchar(30),phoneno varchar(30))  -->
+----------------------------------------------------------------------------
+success.jsp
+--------------------------
 
 
 

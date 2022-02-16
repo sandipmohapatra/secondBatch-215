@@ -429,6 +429,91 @@ designation varchar(30),salary varchar(30),phoneno varchar(30))  -->
 ----------------------------------------------------------------------------
 success.jsp
 --------------------------
+angular + webservice
+
+------------------------------------------
+npm uninstall -g @angular/cli
+npm install -g @angular/cli@latest
+--------------------------------------------------------- 
+Angular +spring (2 servers node server,tomcat server)
+---------------------------
+1)student all :- This will display the list of students.with edit and delete button.
+2)student create :- we can insert data into the database.
+3)student edit:- The button is there in student all.To edit the students.
+4)app.component.ts:- In this we have selector: 'app-root'.
+5)student.service.ts:-here we have http sevice for interacting with spring boot.we have different methods in it.
+http://localhost:8090/rest/student :- in service we have the link of spring.
+in spring we have the link for angular.@CrossOrigin(origins = "http://localhost:4200")
+6) CrossOrigin :- it will allow data coming from different server.
+The methods in the student.service.ts 
+1)getAllStudents()
+2)deleteOneStudent(id: number)
+3)createStudent(student: Student)
+4)getOneStudent(id: number)
+5)updateStudent(id: number, student: Student)
+7)Observable:- It is a stream of event or data  
+-----------------------------------------------------------------
+Model-view-Controller :- 
+view :- presentation layer (angular page)
+Model :- it will interact with the database.
+controller:- It controls the total flow of the program.
+--------------------------controller.java---------------------------------------------------------- 
+	Integer saveStudent(Student s);
+	void updateStudent(Student s);
+	
+	void deleteStudent(Integer id);
+
+	Optional<Student> getOneStudent(Integer id);
+	List<Student> getAllStudents();
+
+	boolean isStudentExist(Integer id);
+-----------------------------------------------------------------------------------------------------
+In restwebservices we have 4 methods
+-----------------------------------------------
+get():- it is used to retrive the data.
+post():- it is used to save the data.
+put():- it is used to modify the data.
+delete():- It is used to remove the data.
+-------------------------------------------------------------------------------------
+student.service.ts
+-----------------------------
+1)http://localhost:8090/rest/student/All
+2)http://localhost:8090/rest/student/remove/${id}
+3)http://localhost:8090/rest/student/save
+4)http://localhost:8090/rest/student/one/${id}
+5)http://localhost:8090/rest/student/modify/${id}
+----------------------------------------------------------------------------------
+These endpoint URL are coming from angular to springRest.
+Then fetch the data.
+---------------------------------------------------------------------------------------
+how angular is linked with springBootRest
+-------------------------------------------------------------
+1)crossDomain
+2)angular has portno of springbooot
+3)springboot has the portno of angular
+4)The mapping is done from angular to get the data from spring boot.
+-----------------------------------------------------------------------------------------
+spring Boot
+------------------------
+1)main.java
+2)controller.java is used for mapping
+3)model is used for creating table.<student>
+4)repository :- it is a interface with predefined methods.StudentRepository extends JpaRepository<Student, Integer>
+	Integer saveStudent(Student s);:- to enter the new data
+	void updateStudent(Student s);:- to modify the data
+	void deleteStudent(Integer id);:-to delete the data with id
+	Optional<Student> getOneStudent(Integer id);:- to search the data by id.
+	List<Student> getAllStudents();:- to display all data. 
+	boolean isStudentExist(Integer id);:- to see the student by this id is present or not.
+5)service:- we have some predefined methods.
+6)serviceimpl :- we define the methods of service Interface.
+7)util :- it is used to modify the data.
+----------------------------------------------------------------------------------
+
+add 2 more columns to angular form phoneno and collage name.
+------------------------------------------------------------------------------------------
+
+
 
 
 

@@ -511,8 +511,10 @@ spring Boot
 ----------------------------------------------------------------------------------
 
 add 2 more columns to angular form phoneno and collage name.
+-------------------------------------Assignment-1-----------------------------------------------------
+create a employee table.
+empno,name,salary,designation,email,phoneno,deptname.
 ------------------------------------------------------------------------------------------
-
 
 
 

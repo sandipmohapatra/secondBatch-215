@@ -451,27 +451,25 @@ The methods in the student.service.ts
 3)createStudent(student: Student)
 4)getOneStudent(id: number)
 5)updateStudent(id: number, student: Student)
-7)Observable:- It is a stream of event or data  
+7)Observable:- It is a stream of event or data for communicating with the spring.
+8)subscribe:- to print/publish the data. 
 -----------------------------------------------------------------
 Model-view-Controller :- 
 view :- presentation layer (angular page)
 Model :- it will interact with the database.
 controller:- It controls the total flow of the program.
 --------------------------controller.java---------------------------------------------------------- 
-	Integer saveStudent(Student s);
-	void updateStudent(Student s);
-	
-	void deleteStudent(Integer id);
-
-	Optional<Student> getOneStudent(Integer id);
-	List<Student> getAllStudents();
-
-	boolean isStudentExist(Integer id);
+Integer saveStudent(Student s);
+void updateStudent(Student s);
+void deleteStudent(Integer id);
+Optional<Student> getOneStudent(Integer id);
+List<Student> getAllStudents();
+boolean isStudentExist(Integer id);
 -----------------------------------------------------------------------------------------------------
 In restwebservices we have 4 methods
 -----------------------------------------------
 get():- it is used to retrive the data.
-post():- it is used to save the data.
+post():- it is used to save/insert the data.
 put():- it is used to modify the data.
 delete():- It is used to remove the data.
 -------------------------------------------------------------------------------------
@@ -525,17 +523,122 @@ constructor(
     public addr: string;){}
 }
 -------------------------------------------------------------------------------------------------
+log files:-
+-----------------
+It will print the message to check the flow of the program.
+we have 5 keywords
+1)info
+2)warn
+3)debug
+4)error
+5)fatal
+---------------------------------
+example:-
+---------------
+import org.apache.log4j.Appender;
+import org.apache.log4j.ConsoleAppender;
+import org.apache.log4j.Layout;
+import org.apache.log4j.Logger;
+import org.apache.log4j.SimpleLayout;
 
+public class TestApp {
+	//3.Create Logger object
+	private static Logger log=Logger.getLogger(TestApp.class);
+	
+	public static void main(String[] args) {
+		//1. Create layout
+		Layout layout=new SimpleLayout();
+		//2. create appender + link layout
+		Appender app=new ConsoleAppender(layout);
+		
+		//4. link appender with logger
+		log.addAppender(app);
+		
+		
+		//---Print Messages--------------
+		log.info("FROM INFO");
+		log.debug("FROM DEBUG");
+		log.fatal("FROM FATAL");
+		log.error("FROM ERROR");
+		log.warn("FROM WARN");
+	}
+}
+--------------------------------------------------------------------------
+pom.xml
+------------------
+<dependency>
+	<groupId>log4j</groupId>
+	<artifactId>log4j</artifactId>
+	<version>1.2.17</version>
+</dependency>
+<dependency>
+           <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.5</version>
+</dependency>
 
+-----------------------------------Postman------------------------------------------------------------
+It is a tool for testing the springRestApi.
+Karma/jasmine is use to test angular/javascript or frontend. 
+-------------------------------------------------------------------------------------------------------------
+post:- it is used save the data  
+http://localhost:8090/rest/student/save
 
+{
+  "addr": "Bangalore",
+  "course": "Java",
+  "email": "poooja@gmail.com",
+  "fee": 6700,
+  "id": 0,
+  "name": "pooja"
+}
+-----------------------------------------------------------------
+get:-to retrive the data
+http://localhost:8090/rest/student/All
 
-
-
-
-
-
-
-
-
-
+[
+    {
+        "id": 2,
+        "name": "pooja",
+        "fee": 6700.0,
+        "email": "poooja@gmail.com",
+        "course": "Java",
+        "addr": "Bangalore"
+    },
+    {
+        "id": 1,
+        "name": "priyanka",
+        "fee": 6700.0,
+        "email": "priyanka@gmail.com",
+        "course": "Java",
+        "addr": "Delhi"
+    }
+]
+------------------------------------------------------------------------
+http://localhost:8090/rest/student/one/${id}
+get :- This will display a single data according to the id.
+-----------------------------------------------------------------------------
+{
+    "id": 1,
+    "name": "priyanka",
+    "fee": 6700.0,
+    "email": "priyanka@gmail.com",
+    "course": "Java",
+    "addr": "Delhi"
+}
+------------------------------------------------------------------------------------------------------
+http://localhost:8090/rest/student/modify/${id}
+put:- to modify the record.
+{
+  "addr": "PUNE",
+  "course": "Java",
+  "email": "poooja@gmail.com",
+  "fee": 9700,
+  "id": 0,
+  "name": "pooja"
+}
+---------------------------------------------------------------------------------------------------------
+http://localhost:8090/rest/student/remove/${id}
+delete:- it will delete the record.
+---------------------------------------------------------------------
 	  

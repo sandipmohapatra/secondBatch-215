@@ -641,4 +641,67 @@ put:- to modify the record.
 http://localhost:8090/rest/student/remove/${id}
 delete:- it will delete the record.
 ---------------------------------------------------------------------
-	  
+swagger :- It is a testing tool to test the springRest API
+------------------------------------------------------------------------------------------
+example:-
+package sandip.swagger.config;
+
+import java.util.Collections;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
+
+import springfox.documentation.builders.PathSelectors;
+import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.Contact;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+@Profile({"default","qa"})
+@Configuration
+@EnableSwagger2
+public class SwaggerConfig 
+{
+@Bean
+public Docket createDocket()
+{
+	return new Docket(DocumentationType.SWAGGER_2)
+			.select()
+			.apis(RequestHandlerSelectors.basePackage("sandip"))
+			.paths(PathSelectors.ant("/rest/**"))
+			.build()
+			.apiInfo(apiInfo());
+	
+}
+
+private ApiInfo apiInfo() {
+		return new ApiInfo(
+				"STUDENT APP BY SANDIP",
+				"PROGRAM FOR MPHASIS 215",
+				"1ST REST PRG",
+				"http://simoninfotech.com",
+				new Contact("sandip","7760213015","sandipmohapatra123@gmail.com"),
+				"7996997004","http://simoninfotech.com",
+				Collections.emptyList());
+				
+}
+}
+----------------------------------------------------------------------------
+pom.xml
+--------------
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+-----------------------------------------------------------------------------------------------------------------------------------
+http://localhost:8090/swagger-ui.html
+----------------------------------------------------------------------

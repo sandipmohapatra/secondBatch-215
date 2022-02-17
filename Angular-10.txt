@@ -1,0 +1,1334 @@
+software requirement :-
+1)download nodejs
+2)Editor Visual studio code.
+-------------------------------------------------------------------
+1)goto the command prompt :- node -v
+2)npm install -g @angular/cli-- installing angular 
+3)ng new batch215 ---300mb download the library files.
+4)cd batch215 ---------start from here.
+5)ng serve ---starting the server
+6)open on browser localhost:4200
+------------------------------------
+open visual studio code
+File -->open folder -->browse
+-----------------------------------------------------
+Example-1
+--------------------
+app.component.html
+----------------------------------
+<h1>Welcome to Angular10</h1><br>
+<h2>At Mphasis Lerning Center</h2>
+Enter your Name<input type=text name=t1 size=20>
+----------------------------------------------------------------
+app.component.css
+------------------------------------
+h1{
+    color:blue;
+}
+---------------------------------------------------------
+Notes:-
+we will write code in javascript (.js) after compilation it will converted to .ts file.
+ts is typescript.
+1)Advanced websites are created with angular.
+2)cricbuzz :- to see the cricket match.In this whole page will not render or update.Only the modified part will update.
+3)Angular is an open source,cross platform framework.
+-------------------------------------------------------------------------------
+app is the folder name.
+1)app.component.html ----presentation(view)
+2)app.component.css---style
+3)app.component.ts ---logic
+4)app.module.ts ---to store the component details.
+-------------------------------------------------------------------------------------
+to create one more comopent ----(class)
+1)ng g c login --skipTests
+
+first goto 
+C:\Users\sandip\batch215\src\app>ng g c login --skipTests
+
+------------------------------------------------------------------------------------------------
+2)we have to do 2 changes
+------------------------------------------------------------
+1)index.html:-make change in the tag.<></>
+2)app.module.ts :-
+make change in the bootstrap file.[]
+-------------------------------------------------------------
+<h2>At Mphasis Registration Page</h2>
+<table>
+<tr><td>Enter your Name</td><td><input type=text name=t1 size=20></td></tr>
+<tr><td>Enter your Name</td><td><input type=text name=t1 size=20></td></tr>
+<tr><td>Enter your Name</td><td><input type=text name=t1 size=20></td></tr>
+<tr><td>Enter your Name</td><td><input type=text name=t1 size=20></td></tr>
+<tr><td>Enter your Name</td><td><input type=text name=t1 size=20></td></tr>
+<tr><td></td><td><input type=submit value=submit></td></tr>
+</table>
+-----------------------------------------------------
+login
+registration page
+contact page
+book a bed
+book a doctor
+book a ambulance
+-----------------------------------------------
+What is the work of the server.
+It will compile the .ts code into .js code.It will display the error message.
+-------------------------------------------------------------------
+@Component({
+  selector: 'app-login',------------------------------------index.html
+  templateUrl: './login.component.html',-------------this links to a .html page
+  styleUrls: ['./login.component.css']-----------------this links to a .css page 
+})
+----------------------------------------------------------------------
+template: In this we have to mention the html page there itself.
+style:In this we have to mention the style there it self.
+-----------------------------------------------------------------------------
+npm install -g typescript@latest
+-------------------------------------------------------- 
+test1.ts
+-----------------
+let uname:string="Sahil";
+let age:number=20;
+console.log("Hello "+uname);
+console.log("Your age is  "+age);
+-------------------------------------------------------
+to compile :- tsc test1.ts
+to run :- node test1.js
+----------------------------------------------------------
+after compilation .ts file will be converted to .js
+--------------------------------------------------------------
+var uname = "Sahil";
+var age = 20;
+console.log("Hello " + uname);
+console.log("Your age is  " + age);
+----------------------------------------------------------- 
+step 1:-create a file inside app by any name 'example1.ts' 
+step 2:-change in index.html
+step 3:-in app.module 
+import { TestComponent } from './example1';
+add in the declaration :-TestComponent
+add in the bootstrap :-[TestComponent]
+step 4:- ng serve 
+Example-1
+------------------
+import {Component} from '@angular/core';
+@Component({
+selector:'app-sahil',
+template:`
+<p>Hello my name is {{name}}</p>
+<p>Hello my email is {{email}}</p>
+<p>My address is {{address.street}}{{address.loc}}
+{{address.state}}{{address.city}}</p>
+<p><Button (click)="sayName()">Say your Details</Button></p>
+`
+})
+export class TestComponent
+{
+    name:string;
+    email:string;
+    address:any;
+constructor()
+{
+    this.name='Sahil Khan';
+    this.email='sahil@gmail.com';
+    this.address=
+    {
+        street:101,
+        loc:'Shivaji Nagar',
+        state:'Karnataka',
+        city:'Bangalore'
+    }}
+        sayName()
+    {
+        console.log("My name is ",this.name);
+        console.log("My email is ",this.email);
+        console.log("My address is ",this.address);
+    }
+}
+--------------------------------------------------------------------------------------------
+step 1:
+---------------
+app.component.ts
+---------------------------------
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  template: `
+  MENU <ul>
+  <li><a [routerLink]="['/Login']">Login</a></li>
+  <li><a [routerLink]="['/Register']">Register</a></li>
+  </ul><hr><hr>
+  <router-outlet> </router-outlet>`
+  
+})
+export class AppComponent {
+  title = 'batch215';
+}
+-------------------------------------app.module.ts----------------------------------------
+step 2:-
+app.module.ts
+---------------------
+import { RouterModule,Routes } from '@angular/router';
+
+step 3:-
+--------------
+const appRoutes: Routes=[
+{path:'Login',component:LoginComponent},
+{path:'Register',component:RegistrationComponent},
+];
+-----------------------------------------------------------------------------
+step 4:-
+import:[RouterModule.forRoot(appRoutes)],
+---------------------------------------------------------------------
+step 5:-
+------------
+bootstrap: [AppComponent]
+------------------------------------------------------
+app.module.ts
+----------------------
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule,Routes } from '@angular/router';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { LoginComponent } from './login/login.component';
+import { RegistrationComponent } from './registration/registration.component';
+import { TestComponent } from './example1';
+
+const appRoutes: Routes=[
+{path:'Login',component:LoginComponent},
+{path:'Register',component:RegistrationComponent},
+];
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    RegistrationComponent,
+    TestComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    RouterModule.forRoot(appRoutes)
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+-------------------------------------------------------------------------------------------------------------
+
+example-2(using bootstrap)
+---------------------
+app.component.ts
+-------------------------
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl:'./app.component.html'
+  })
+export class AppComponent {
+  title = 'batch215';
+}
+---------------------------------------------------------------------------
+app.component.html
+-------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+    
+    <div style="padding:5px">
+        <ul class="nav nav-tabs">
+            <li routerLinkActive="active">
+                <a routerLink="Login">Login</a>
+            </li>
+            <li routerLinkActive="active">
+                <a routerLink="Register">Register</a>
+            </li>
+           
+        </ul>
+        <br/>
+        <router-outlet> </router-outlet>
+    </div></div>
+    </body>
+    </html>
+---------------------------------------------------------------------------------------
+Example:-
+--------------------
+Register.Register.html
+----------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <h2>Student Registration Page</h2>
+  <form role="form" action=second>
+    <div class="form-group">
+        <label for="name">Name:</label>
+  <input type="text" class="form-control" id="name" placeholder="Enter name" name=t1 required>
+      </div>
+      <div class="form-group">
+        <label for="number">Phone no:</label>
+  <input type="Number" class="form-control" id="Phone" placeholder="Enter phone no" name=t2 required>
+      </div>
+   
+    
+    <div class="form-group">
+      <label for="email">Email:</label>
+<input type="email" class="form-control" id="email" placeholder="Enter email" name=t3 required>
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name=t4 required>
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox"> Remember me</label>
+    </div>
+<button type="submit" class="btn btn-default">Submit</button> 
+  </form></div></body></html>
+-------------------------------------------------------------------------------------------------------
+Task:- 3pm to 5pm
+-------------------------------
+1)Hotel Management System--book table,book room,login,registration.,contact,FeedBack
+2)Cab Management System ---Book OLA cab,contact,feedback,Location
+---------------------------------------------------------
+Example-3
+--------------------------------------
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-test1',
+  templateUrl: './test1.component.html',
+  styleUrls: ['./test1.component.css']
+})
+export class Test1Component 
+{
+public product=
+{
+  Name:'Samsung TV',
+  Price:45000.00,
+}}
+------------------------------------------------------------------------------------
+<dl>
+    <dt>Name</dt>
+    <dd>{{product.Name}}</dd>
+    <dd><input type=text value={{product.Name}}></dd>
+    <dt>Price</dt>
+    <dd>{{product.Price}}</dd>
+    <dd innerHTML={{product.Price}}></dd>
+    </dl>
+---------------------------------------------------------------------------
+1)Angular is a frontend (view).It is an opensource.Freely download from internet.
+2)It provides end to end soluttion for building application,debugging ,testing and deploying (installing in the client system).
+3)It provides testing framework like jasmine,karma,protractor.
+4)It support Object oriented Programming.
+5)We write the program in typescript.It was introduced by google.
+6)It support MVC framework.(model-view-controller).
+7)It is used to develop SPA(single page application).It will have single routing page which will connect to different pages.
+8)It has high speed and performance is better as compared to older technology webpages.
+9)It renders and upload the modified part only.like cricbuzz only the score part upload not the whole page.
+10)Angular use AOT compiler.(Ahead-of-time).
+11)It compiles the page and loads into the browser.We use node server.
+-------------------------------------------------------------------------------------------------------
+app.module.ts
+-------------------------
+1)It contains the listt of files used in your project.
+2)every modules (login,register) or library that you want to use in the project shoul be configured in app.module.ts
+3)In the module you will have .html,.css,.ts and .spec.
+-----------------------------------------------------------------------------------
+1)selector:<app-root></app-root>.This links with the index.html.The program starts from index.html.
+2)template:Here we directly write the HTML code.
+3)templateURL:Here we give path to the html file.
+4)styles:It is a collection of style properties and there values.
+5)styleURLs:It calls the external stylesheet.
+-----------------------------------------------------------------------------------------
+DataBinding :- There are 2 ways of data binding.
+1)One-way binding
+------------------------------
+i)interpolation:-we use double curly braces {{}} .It is also called expression.
+example:-
+ <p>The sum of 6 and 7 is {{6+7}}</p> 
+ <p>The mult of 6 and 7 is {{6*7}}</p>
+<p>The name is {{name}}</p>
+---------------------------------------------------------------------- 
+ii)property binding:- in this we use square brackets.The property is binded with DOM(document object model)
+---------------------------
+<img[src]="shoe.jpg">
+---------------------------------------------------------------------
+iii)event Binding:-In this we use circular brackets.The event is binded with button.
+<button(onclick)="fun()">Save</button>
+---------------------------------------------------------------------------------------------------------------
+2)Two-way binding :- It takes the input and update the entry.It is dynamic.
+we make change in the HTML page dynamically we require 2 way binding.
+html:-
+Enter your name<input type=text name=t1 size=20>
+ angular:-
+Enter your name<input type=text [(ngModel)]="name" size=20>
+In this when you change the name will update.
+------------------------------------------------------------------------------------------------------ 
+when we use [(ngModule)] we have to import 
+**import { FormsModule } from '@angular/forms'; in the app.module.ts
+add in import also.
+-----------------------------------------------------------------------------------------------------
+app.component.ts
+-----------------------------
+import { Component } from '@angular/core';
+@Component({
+  selector: 'app-twowaybinding',
+  templateUrl: './twowaybinding.component.html',
+  styleUrls: ['./twowaybinding.component.css']
+})
+export class TwowaybindingComponent 
+{
+public name="Samsung TV";
+public city="Bangalore";
+public InStock=true;
+  public product=
+  {
+    name:"",
+    city:"",
+    InStock:false
+  };
+  public updateProduct()
+  {
+    this.product=
+    {
+    name:this.name,
+    city:this.city,
+    InStock:this.InStock
+  };
+}
+}
+---------------------------------------------------------------------------------
+app.component.html
+---------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="form-group">
+        <label>Name:</label>
+  <input type="text" class="form-control" [(ngModel)]="name">
+      </div>
+      <div class="form-group">
+        <label>Address to Ship:</label>
+  <select [(ngModel)]="city"class="form-control">
+<option>Bangalore</option>
+<option>Hydrabad</option>
+      </select>
+      </div>
+      <div class="form-group">
+      <div>
+        <input [(ngModel)]="InStock" type="checkbox">Yes
+         </div></div>
+         <div class="form-group">
+            <button (click)="updateProduct()" class="btn btn-primary">Update</button>
+         </div>
+         <div class="col-9">
+             <table class="table table-hover">
+<tr>
+    <td>Name</td>
+    <td [innerHTML]="product.name"></td>
+</tr>
+<tr>
+    <td>Address to Ship</td>
+    <td [innerHTML]="product.city"></td>
+</tr>
+<tr>
+    <td>Stock Status</td>
+    <td>{{(product.InStock==true)?"Available":"Out Of Stock"}}</td>
+</tr>
+             </table>
+         </div>
+            </div>
+         </body>
+        </html>
+-----------------------------------------------------------------------------------------------------
+IfDemo example
+------------------------------
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-if-demo',
+  templateUrl: './if-demo.component.html',
+  styleUrls: ['./if-demo.component.css']
+})
+export class IfDemoComponent {
+
+  public product=
+  {
+    Name:'NikeShoes',
+    Price:4500.00,
+    Photo:'assets/shoe.webp'
+  };
+  public showImage = false;
+  public btnText = 'Show';
+
+  public TogglePreview()
+  {
+    this.showImage = (this.showImage==false)?true:false;
+    this.btnText = (this.btnText=='Show')?'Hide':'Show';
+  }
+
+}
+----------------------------------------------------------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+
+<div class="container-fluid">
+<h2>Product Details</h2>
+<div class="row">
+  <div class="col-3">
+      <dl>
+          <dt>Name</dt>
+          <dd>{{product.Name}}</dd>
+          <dt>Price</dt>
+          <dd>{{product.Price}}</dd>
+      </dl>
+      <button (click)="TogglePreview()" class="btn btn-primary btn-sm btn-block">{{btnText}} Preview</button>
+  </div>
+  <div class="col-9">
+    <div *ngIf="showImage">
+        <img [src]="product.Photo" height="200" width="200" >
+       <img src="assets/shoe.webp" height="200" width="200" > 
+    </div>
+  </div>
+</div>
+</div>
+--------------------------------------------------------------------------------------------------------
+Example-8(ngFor)
+1.fordemo.component.ts
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-fordemo',
+  templateUrl: './fordemo.component.html',
+  styleUrls: ['./fordemo.component.css']
+})
+export class FordemoComponent {
+  public categories = ['Electronics', 'Footwear', 'Fashion'];
+  public menudata = [
+    {Category: 'Electronics', Products: ['Samsung TV', 'JBL Speaker']},
+    {Category: 'Footwear', Products: ['Nike Casuals', 'Lee Cooper Boot']}
+  ];
+}
+-----------------------------------------------------------------------------------------------------------------
+2.fordemo.component.html
+<div class="container-fluid">
+ <div class="row">
+  <div class="col-3">
+    <h3>Categories</h3>
+    <ol>
+        <li *ngFor="let item of categories">{{item}}</li>
+    </ol>
+  </div>
+  <div class="col-3">
+    <h3>Categories</h3>
+    <select class="form-control">
+        <option *ngFor="let item of categories">
+            {{item}}
+        </option>
+    </select>
+  </div>
+  <div class="col-3">
+    <h3>Categories</h3>
+    <table class="table table-hover">
+      <tbody>
+          <tr *ngFor="let item of categories">
+              <td><a href="#">{{item}}</a></td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+ </div>
+ <div class="row" style="margin-top: 20px;">
+    <div class="col-3">
+        <h3>Menu</h3>
+        <ol>
+            <li *ngFor="let item of menudata">
+                {{item.Category}}
+                <ol type="a">
+                    <li *ngFor="let product of item.Products">
+                        {{product}}
+                    </li>
+                </ol>
+            </li>
+        </ol>
+    </div>
+    <div>
+        <h3>Menu</h3>
+        <select class="form-control">
+            <optgroup *ngFor="let item of menudata" label="{{item.Category}}">
+                <option *ngFor="let product of item.Products">
+                    {{product}}
+                </option>
+            </optgroup>
+        </select>
+    </div>
+    <div class="col-3">
+        <h3>Menu</h3>
+        <div *ngFor="let item of menudata">
+            <details>
+                <summary>{{item.Category}}</summary>
+                <ol>
+                    <li *ngFor="let product of item.Products">
+                        {{product}}
+                    </li>
+                </ol>
+            </details>
+        </div>
+    </div>
+ </div>
+</div>
+----------------------------------------------------------------------------------------------
+Task :- 
+--------------------------------------------------------------------------------
+insert images and use toggle button for
+shoes
+jeans
+speakers
+-------------------------------------------------------------
+create a program to show stock items for 
+vegetables,electronic goods,shoes and jeans
+----------------------------------------------------------------------
+Angular Pipe
+------------------------
+1)pipe is used to transform data.
+example:- converting a string to uppercase or lowercase.
+2)Data may come to angular from various source so the data type of source provider and datatype of the typescript will vary .so to convert to typescript format we have to use pipe.
+3)pipe is used to formating and filtering the data.
+4)All pipes are derived from 'PipeTransform'.
+5)we have to import 
+import {PipeTransform} from '@angular/core'
+6)we have some pre-defined pipes and we can also create custom pipes.
+7)Every pipe is defined with a pipe name,which is configured uusing "@Pipe()".
+example:- @Pipe({name:"uppercase"})
+8)Every pipe implements "PipeTransform" and use the transform() method.
+-------------------------------------------------------------------------------------------------------
+example-1:-
+
+import { Component } from '@angular/core';
+@Component({
+  selector: 'app-pipe-demo',
+  templateUrl: './pipe-demo.component.html',
+  styleUrls: ['./pipe-demo.component.css']
+})
+export class PipeDemoComponent {
+Name: string ='Sai Gopal';
+Namelist: string[]=["bibhudatta","Madhavi","sahil"]
+  }
+-------------------------------------------------------------------------------------
+<div>
+The name is {{Name}}<br>
+The Listname is {{Namelist[0]|uppercase}}<br>
+The name is {{Namelist[1]|uppercase}}<br>
+The name is {{Namelist[2]|uppercase}}<br>
+</div>
+-----------------------------------------------------------------------
+Example-2
+---------------------
+import { Component } from '@angular/core';
+@Component({
+  selector: 'app-pipe-demo',
+  templateUrl: './pipe-demo.component.html',
+  styleUrls: ['./pipe-demo.component.css']
+})
+export class PipeDemoComponent {
+Name: string ='Sai Gopal';
+Namelist: string[]=["bibhudatta","Madhavi","sahil"]
+public product=
+{
+  Name:'Samsung TV',
+  Price:45000.00,
+  Mfd:new Date('01-10-2022')
+}
+  }
+-------------------------------------------------------------------
+<div>
+The name is {{Name}}<br>
+The Listname is {{Namelist[0]|uppercase}}<br>
+The name is {{Namelist[1]|uppercase}}<br>
+The name is {{Namelist[2]|uppercase}}<br>
+The product name is{{product.Name|titlecase}}<br>
+The product price is{{product.Price|number}}<br>
+The product price is{{product.Price|currency}}<br>
+The product price is{{product.Price|currency:'INR'}}<br>
+The product price is{{product.Price|currency:'&#8377;'}}<br>
+The product Manufacturing Date is{{product.Mfd|date:'MMM-dd-yyyy'}}<br>
+The product Manufacturing Date is{{product.Mfd|date:'shortDate'}}<br>
+The product Manufacturing Date is{{product|json}}<br>
+The listName is {{Namelist[0]|slice:1:3}}<br>
+The listName is {{Namelist[0]|slice:1:5}}<br>
+The listName is {{Namelist[0]|slice:0:5}}<br>
+</div>
+---------------------------------------------------------------------------------------------
+Custom pipe :- 
+syntax to create a custom pipe
+------------------------------------------
+import {Pipe,PipeTransform} from '@angular/core';
+@Pipe({name:'Pipename'})
+export class Pipeclass implements PipeTransform
+{
+transform(parameters):returntype
+{}
+}
+-------------------------
+1)Pipename :- name of the custom pipe.
+2)Pipeclass :- This is the name of the class assigned to the custom pipe.
+3)transform(parameters):returntype
+ it is the function defined for the pipe with parameter which has to be passed to the pipe and the return type of the
+output.
+-----------------------------------------------------------------------------------------
+ Example-1
+--------------------
+we have to create this file because it is like a function which can be re-used.
+----------------------------------------------------------------------------
+custompipe.multiplier.ts (we have to create a new .ts file)
+----------------------------------------------------------------------------
+import {Pipe,PipeTransform} from '@angular/core';
+@Pipe({name:'Multiplier'})
+
+export class Multiplierpipe implements PipeTransform
+{
+    transform(value: number, Multiply: number):number 
+    {
+        return Multiply * value;
+    }
+}
+--------------------------------------------------------------
+custompipe.component.ts
+------------------------------------------
+import { Component } from '@angular/core';
+@Component({
+  selector: 'app-custompipe',
+  template: `
+  <p>The Result is {{5|Multiplier:20}}</p><br>
+  <p>The Result is {{6|Multiplier:20}}</p><br>
+  <p>The Result is {{7|Multiplier:20}}</p><br>
+  <p>The Result is {{8|Multiplier:20}}</p><br>
+    `
+  })
+export class CustompipeComponent {}
+-----------------------------------------------------------------------------------------
+we have to add in app.module.ts the multiplier.ts details.
+1)import the class
+2)add the class in declaration.
+-------------------------------------------------------------------------------------------------------
+Example-2
+---------------------
+import {Pipe,PipeTransform} from '@angular/core';
+@Pipe({name:'square'})
+
+export class Multiplierpipe implements PipeTransform
+{
+    transform(value: number):number 
+    {
+        return value * value;
+    }
+}
+-------------------------------------------------------------------------
+import { Component } from '@angular/core';
+@Component({
+  selector: 'app-custompipe',
+  template: `
+  <p>The Result is {{5|square}}</p><br>
+  <p>The Result is {{6|square}}</p><br>
+  <p>The Result is {{7|square}}</p><br>
+  <p>The Result is {{8|square}}</p><br>
+    `
+  })
+export class CustompipeComponent {}
+----------------------------------------------------------------------------
+Example-3
+----------------
+import { Component } from '@angular/core';
+@Component({
+  selector: 'app-custompipe',
+  templateUrl: 'custompipe.component.html'
+  })
+export class CustompipeComponent {
+public msg='welcome To Angular-10';
+}
+--------------------------------------------------------------------
+import {Pipe,PipeTransform} from '@angular/core';
+@Pipe({name:'sentancecase'})
+
+export class Multiplierpipe implements PipeTransform
+{
+    transform(str:string):string 
+    {
+        let firstChar=str.charAt(0);
+        let restChar=str.substring(1);
+       let sentance=firstChar.toUpperCase()+restChar.toLowerCase();
+        return sentance;
+    }
+}
+--------------------------------------------------------------------
+<p>{{msg|sentancecase}}</p>
+-----------------------------------------------------------------------------------
+Example-1
+LikeDisLikeDemo
+----------------
+import { Component } from '@angular/core';
+@Component({
+  selector: 'app-like-demo',
+  templateUrl: './like-demo.component.html',
+  styleUrls: ['./like-demo.component.css']
+})
+export class LikeDemoComponent
+{
+public products=[
+{Name:'JBL speaker',Photo:'assets/shoe.webp',Likes:0,Dislikes:0},
+{Name:'Nike Shoes',Photo:'assets/shoe.webp',Likes:0,Dislikes:0},
+{Name:'shirt',Photo:'assets/shoe.webp',Likes:0,Dislikes:0}
+];
+
+public LikesCounter(item:any)
+{
+  item.Likes++;
+}
+public DislikesCounter(item:any)
+{
+  item.Dislikes++;
+}
+
+}
+-------------------------------------------------------------------------------
+ <h2>Product Catalog</h2>
+<div class="card-deck">
+    <div class="card" *ngFor="let item of products">
+<div class="card-header">
+<h3>{{item.Name}}</h3>
+</div>
+<div class="card-header">
+    <img width="200" height="200"[src]="item.Photo">
+</div>
+<div class="card-footer">
+<div class="btn-group">
+    <button (click)="LikesCounter(item)"class="btn btn-success">[{{item.Likes}}] Likes</button>
+    <button (click)="DislikesCounter(item)"class="btn btn-danger">[{{item.Dislikes}}] Dislikes</button>
+</div>
+</div>
+</div>
+------------------------------------------------------------------------------
+Task -1:-
+
+create a pipe called simpleinterest
+
+pass 3 nos
+1)amount
+2)years
+3)rate
+-----------------------------------
+si=(p*t*r)/100;
+------------------------------------------
+Task-2 
+---------------
+create a project combining *ngIf and like and dis-like
+-------------------------------------------------------------------------------------
+Angular Service:-
+-------------------------------
+It is like a function which can be re-used in any of the application.
+Difference between function and service
+---------------------------------------------------------
+Function is written within the program which can be used within the application only.example :-showData().
+But services can be used in all application according to requirement.
+It is not limited to single application.
+-----------------------------------------------------------
+we have to create a service in a separate folder and we have to inject it to a component where we want to use the service.
+----------------------------------------------------------------------------------------------
+step 1: import {Injectable} from '@angular/core'
+step 2:@Injectable()
+step 3:providedIn:'root'
+
+--------------------------------------------
+example:-
+calculator.service.ts
+----------------------------------
+import {Injectable} from '@angular/core'
+@Injectable({
+    providedIn:'root'
+})
+export class CalcService{
+    public add(...params:number[]):number
+    {
+        let result=0;
+        for(let val of params)
+        {
+            result=result+val;
+        }
+        return result;
+    }
+}
+--------------------------------------------------------------------
+calculator.component.ts
+-------------------------------
+import { Component } from '@angular/core';
+import { CalcService } from './calculator.service';
+@Component({
+  selector: 'app-calculator',
+  templateUrl: './calculator.component.html',
+  styleUrls: ['./calculator.component.css']
+})
+export class CalculatorComponent {
+sum:number=0;
+constructor(calc:CalcService)
+{
+  this.sum=calc.add(11,22,3,44);
+  alert("The sum is "+this.sum);
+  console.log("The sum is "+this.sum);
+  
+}
+  
+}
+---------------------------------------------------------------------------
+example-2
+--------------------
+import {Injectable} from '@angular/core'
+@Injectable({
+    providedIn:'root'
+})
+export class CalcService{
+    public add(...params:number[]):number
+    {
+        let result=0;
+        for(let val of params)
+        {
+            result=result+val;
+        }
+        return result;
+    }
+    public sub(a:number,b:number):number
+    {
+        let result=a - b;
+        return result;
+    }
+}
+---------------------------------------------------------
+import { Component } from '@angular/core';
+import { CalcService } from './calculator.service';
+@Component({
+  selector: 'app-calculator',
+  templateUrl: './calculator.component.html',
+  styleUrls: ['./calculator.component.css']
+})
+export class CalculatorComponent {
+sum:number=0;
+sub:number=0;
+constructor(calc:CalcService)
+{
+  this.sum=calc.add(11,22,3,44);
+  alert("The sum is "+this.sum);
+  console.log("The sum is "+this.sum);
+-----------------------------------------------------------------------------
+    this.sub=calc.sub(11,22);
+    alert("The sub is "+this.sub);
+    console.log("The sub is "+this.sub);
+    
+  } 
+    
+}
+
+---------------------------------------------------------------------------
+Capcha example
+--------------------------
+Math.Random=.45433666*10=4.4433666===round 4
+-----------------------------------------------------------------------------
+capcha.compoonent.ts
+---------------------------------------
+import { Component } from '@angular/core';
+import { YogeshService } from './capcha.service';
+@Component({
+  selector: 'app-capcha',
+  templateUrl: './capcha.component.html',
+  styleUrls: ['./capcha.component.css']
+})
+export class CapchaComponent {
+constructor(private cap:YogeshService){}
+public code=this.cap.GenerateService();
+public refreshClick()
+{
+this.code=this.cap.GenerateService();
+}
+  }
+-----------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------
+capcha.compoonent.html
+--------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<div class="container-fluid">
+    <div class="form-group">
+<label>User name</label>
+    <div>
+        <input type="text" class="form-control">
+        </div>
+    </div>
+<div class="form-group">
+    <label>Password</label>
+        <div>
+            <input type="password" class="form-control">
+            </div>
+    </div>
+<div class="form-group">
+        <label>Varify Code</label>
+            <div>
+{{code}} <button (click)="refreshClick()" class="btn">Click</button>
+                </div>
+        </div>
+        <div>
+        <!--<input type=text class="form-control"> -->
+    </div>
+    <div class="form-control">
+<br><br><button class="btn btn-primary">Login</button>
+    </div>
+</div>
+-----------------------------------------------------------------------------------------------
+capcha.service.ts
+-----------------------------
+import {Injectable} from '@angular/core'
+@Injectable({
+    providedIn:'root'
+})
+export class YogeshService
+{
+    public GenerateService()
+    {
+        let a=Math.random()*10;
+        let b=Math.random()*10;
+        let c=Math.random()*10;
+        let d=Math.random()*10;
+        let e=Math.random()*10;
+        let f=Math.random()*10;
+        let code=`${Math.round(a)} ${Math.round(b)} ${Math.round(c)}
+        ${Math.round(d)} ${Math.round(e)} ${Math.round(f)}`;
+        return code;
+        
+    } 
+}
+--------------------------------------------------------------------------------------------
+Example-Event
+------------------------
+example-12
+----------------------------------------------------------------------
+	Eventsdemo.component.ts
+----------------------------------------------------------------------
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-eventsdemo',
+  templateUrl: './eventsdemo.component.html',
+  styleUrls: ['./eventsdemo.component.css']
+})
+export class EventsdemoComponent {
+    public msg;
+    public txtName;
+    public OnFocus() {
+      this.msg = 'Name in Block Letters';
+    }
+    public OnBlur() {
+      this.msg = '';
+      this.txtName = this.txtName.toUpperCase();
+    }
+    public onCut(){
+      this.msg = 'Removed and Placed on Clipboard';
+    }
+    public onCopy(){
+      this.msg = 'Copied to Clipboard';
+    }
+    public onPaste() {
+      this.msg = 'Inserted from Clipboard';
+    }
+}
+----------------------------------------------------------------
+	Eventsdemo.component.html
+----------------------------------------------------------------
+<div class="container-fluid">
+  <h2>Register for Cut/copy/paste</h2><hr>
+  <div class="form-group">
+      <label>User Name</label>
+      <div>
+          <input (cut)="onCut()" (copy)="onCopy()" (paste)="onPaste()" [(ngModel)]="txtName" (focus)="OnFocus()" (blur)="OnBlur()" class="form-control" type="text" placeholder="Block Letters Only">
+          <span>{{msg}}</span>
+      </div>
+  </div>
+</div>
+------------------------------------------------------------------------------
+Lifecycle hook of Angular.
+--------------------------------------------
+ngOnChanges - When the value of a data bound property changes, then this method is called.
+
+ngOnInit - This is called whenever the initialization of the directive/component after Angular first displays the data-bound properties happens.
+
+ngDoCheck - This is for the detection and to act on changes that Angular can't or won't detect on its own.
+
+ngAfterContentInit - This is called in response after Angular projects external content into the component's view.
+
+ngAfterContentChecked - This is called in response after Angular checks the content projected into the component.
+
+ngAfterViewInit - This is called in response after Angular initializes the component's views and child views.
+
+ngAfterViewChecked - This is called in response after Angular checks the component's views and child views.
+
+ngOnDestroy - This is the cleanup phase just before Angular destroys the directive/component.
+----------------------------------------------------------------
+Angular-project link
+---------------------------------------
+https://drive.google.com/file/d/17lQEXfqsgEuxmo_XlJXTFgzpu1IYuLdi/view?usp=sharing
+-------------------------------------------------------------------------------------------------------------------------
+Shopping Cart Project
+---------------------------------
+Functions used in the shoppingCart Project
+-------------------------------------------------------------- 
+1)OnCategoryChange():- This is function is to display items on Category change
+we have 3 category :-1)ELECTRONICS items are(jblspeakers,earpods)
+2)FOOTWEAR items are(nike shoes,lee-copper shoes)
+3)FASHION items are(shirt,jeans)
+--------------------------------------------------------------------------------------
+2)onProductChanged() :- this will display the product discription on the change of the product
+Name of the product,price of the product,photo of the product
+------------------------------------------------------------------------------------------------------------------
+3)AddToCartClick():- this is used to add the product to the cart.
+------------------------------------------------------------------------------------------------
+4)ToggleCartDisplay():-it is used to display/hide the cart product.
+-----------------------------------------------------------------------------------------------
+5)DeleteCartItem(index:any) :- Items will be stored in an array.it we delete the index value will change.
+-------------------------------------------------------------------------------------------
+shopping.component.ts
+-------------------------------------------
+import { Component} from '@angular/core';
+@Component({
+  selector: 'app-shopping',
+  templateUrl: './shopping.component.html',
+  styleUrls: ['./shopping.component.css']
+})
+export class ShoppingComponent 
+{
+public categories=['Select a Category','Electronics','Footwear','Fashion'];
+public electronics=['Select a Electronics','JBLspeaker','Earpods'];
+public footwear=['Select a Footwear','Nike shoes','lee-Cooper shoes'];
+public fashion=['Select a Fashion','shirt','Jeans'];
+public data=[
+{Name:'JBLspeaker',Price:4500.00,Photo:'assets/jblspeaker.png'},
+{Name:'Earpods',Price:4500.00,Photo:'assets/earpods.png'},
+{Name:'Nike shoes',Price:4500.00,Photo:'assets/shoe.webp'},
+{Name:'lee-Cooper shoes',Price:3500.00,Photo:'assets/leecooper.png'},
+{Name:'shirt',Price:2000.00,Photo:'assets/shirt.png'},
+{Name:'Jeans',Price:2500.00,Photo:'assets/jeans.png'},
+];
+public products:any=[];
+public selectedCategoryName='Select a Category';
+public selectedProductName:any;
+public searchResults:any=[];
+public searchedProduct={
+  Name:'',
+  Price:0,
+  Photo:''
+};
+public cartItems:any=[];
+public cartItemsCount=0;
+public showCart=false;
+public GetCartItemsCount()
+{
+  this.cartItemsCount=this.cartItems.length;
+}
+
+public OnCategoryChange()
+{
+  switch(this.selectedCategoryName)
+  {
+    case "Electronics":
+             this.products=this.electronics;
+        break;
+    case "Footwear":
+             this.products=this.footwear;
+          break;
+    case "Fashion":
+             this.products=this.fashion;
+            break;
+    default:
+             this.products=['select a Category'];
+              break;
+                
+  }
+}
+
+public onProductChanged()
+{
+  this.searchResults=this.data.filter(x=>x.Name==this.selectedProductName);
+  this.searchedProduct={
+Name:this.searchResults[0].Name,
+Price:this.searchResults[0].Price,
+Photo:this.searchResults[0].Photo
+  };
+}
+
+public AddToCartClick()
+{
+  this.cartItems.push(this.searchedProduct);
+  alert('Your Item is Added to the Cart');
+  this.GetCartItemsCount();
+}
+public ToggleCartDisplay()
+{
+  this.showCart=(this.showCart==false)?true:false;
+}
+public DeleteCartItem(index:any)
+{
+  let confirmDelete=confirm('Are you sure you want to Delete?');
+  if(confirmDelete==true)
+  {
+    this.cartItems.splice(index,1);
+    this.GetCartItemsCount();
+  }
+}
+}
+
+------------------------------------------------------------------------------------
+shopping.component.html
+------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<div class="container-fluid">
+    <h2 class="text-center text-primary"><span class="fa fa-shopping-cart"></span>Amazon - Shopping</h2>
+    <div class="row">
+      <div class="col-3">
+          <div class="form-group">
+              <label>Select a Category</label>
+              <div>
+                  <select (change)="OnCategoryChange()" [(ngModel)]="selectedCategoryName" class="form-control">
+                      <option *ngFor="let item of categories">
+                          {{item}}
+                      </option>
+                  </select>
+              </div>
+          </div>
+          <div class="form-group">
+              <label>Select a Product</label>
+              <div>
+                  <select (change)="onProductChanged()" [(ngModel)]="selectedProductName" class="form-control">
+                      <option *ngFor="let item of products">
+                          {{item}}
+                      </option>
+                  </select>
+              </div>
+          </div>
+          <div class="form-group">
+              <label>Preview</label>
+              <div class="card">
+                  <div class="card-header">
+                      <h3>{{searchedProduct.Name}}</h3>
+                  </div>
+                  <div class="card-body text-center">
+                      <img [src]="searchedProduct.Photo" width="200" height="200">
+                  </div>
+                  <div class="card-footer text-center">
+                      <h3>{{searchedProduct.Price | currency:'INR'}}</h3>
+                      <button (click)="AddToCartClick()" class="btn btn-danger btn-block"> <span class="fa fa-shopping-cart"></span>Add to Cart</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="col-6">
+          <div>
+              <table *ngIf="showCart" style="margin-top: 100px;" class="table table-hover">
+                  <caption>Your Cart Items</caption>
+                  <thead>
+                      <tr>
+                          <th>Name</th>
+                          <th>Price</th>
+                          <th>Preview</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let item of cartItems; let i=index">
+                          <td>{{item.Name}}</td>
+                          <td>{{item.Price}}</td>
+                          <td><img width="50" height="50" [src]="item.Photo"></td>
+                          <td>
+                              <button (click)="DeleteCartItem(i)" class="btn btn-danger">Delete Items</button>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+      <div class="col-3">
+          <div>
+              <button (click)="ToggleCartDisplay()" class="btn btn-danger btn-block"><span class="fa fa-shopping-cart"></span> [{{cartItemsCount}}] Your Cart Items</button>
+          </div>
+          
+      </div>
+    </div>
+  </div>
+-----------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

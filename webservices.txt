@@ -436,8 +436,8 @@ npm uninstall -g @angular/cli
 npm install -g @angular/cli@latest
 --------------------------------------------------------- 
 Angular +spring (2 servers node server,tomcat server)
----------------------------
-1)student all :- This will display the list of students.with edit and delete button.
+-------------------------------------3 modules------------------------------------------------------------------------------------
+1)student all :- This will display the list of students.we have edit and delete button with this.
 2)student create :- we can insert data into the database.
 3)student edit:- The button is there in student all.To edit the students.
 4)app.component.ts:- In this we have selector: 'app-root'.
@@ -515,9 +515,16 @@ add 2 more columns to angular form phoneno and collage name.
 create a employee table.
 empno,name,salary,designation,email,phoneno,deptname.
 ------------------------------------------------------------------------------------------
-
-
-
+export class Student {
+constructor(
+    public id: number;
+    public name: string;
+    public fee: number;
+    public course: string;
+    public email: string;
+    public addr: string;){}
+}
+-------------------------------------------------------------------------------------------------
 
 
 
